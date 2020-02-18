@@ -1,0 +1,76 @@
+{% extends 'Shop/base_site.html' %}
+{% load static%}
+
+
+{% block slide %}
+{% if not categ %}
+  <div class="slideshow-container">
+
+  <div class="mySlides fade ">
+    <div class="numbertext">1 / 3</div>
+    <img src="{{obj1.image.url}}"  height=400px width=100%  alt="No image">
+    <div class="text">Caption Text</div>
+  </div>
+
+  <div class="mySlides fade ">
+    <div class="numbertext">2 / 3</div>
+    <img src="{{obj2.image.url}}"  height=400px width=100% alt="No image">
+    <div class="text">Caption Two</div>
+  </div>
+
+  <div class="mySlides fade ">
+    <div class="numbertext">3 / 3</div>
+    <img src="{{obj3.image.url}}"  height=400px width=100% alt="No image">
+    <div class="text">Caption Three</div>
+  </div>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+
+  <div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+{% endif %}
+{% endblock %}
+
+
+{% block content %}
+{% if categ %}
+<img src="{{categ.image.url}}" height=400px width=100% alt="No categ">
+{% endif %}
+
+{% for product in products %}
+<div class="allproduct">
+  <a href="{% url 'productdetail' product.category.slug  product.slug %}"><img src="{{product.image.url}}" height=300px  width=350px  alt="image not found"></a>
+  <p>{{product.name}}</p>
+  <p>{{product.price}}</p>
+</div>
+{% endfor %}
+
+<script>
+    var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 1000); // Change image every 2 seconds
+}
+</script>
+
+
+{% endblock %}

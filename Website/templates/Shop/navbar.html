@@ -1,0 +1,24 @@
+{% load static %}
+<div class="navbar">
+
+  <nav class="">
+    <ul>
+      <li><a href="{% url 'allproduct' %}"><img src="{% static 'Image/logo.png' %}" alt="no image" height=50px width=50px></a></li>
+      <li><a href="{% url 'allproduct' %}">Home</a></li>
+      <li> | </li>
+      {% for cat in links %}
+      <li><a href="{% url 'products_by_cat'  cat.slug %}">{{cat.name}}</a></li>
+      {# <li><a href="{{cat.get_url}}">{{cat.name}}</a></li>#}
+      <li> | </li>
+      {% endfor %}
+      <form class="" action="{% url 'search:search1' %}" method="post">
+        {% csrf_token %}
+        <li><input type="text" name="q" value=""></li>
+        <li><button type="submit" name="button">search</button></li>
+      </form>
+
+      <li>Your Cart( )</li>
+    </ul>
+  </nav>
+
+</div>

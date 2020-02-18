@@ -1,0 +1,15 @@
+{% extends  'Shop/base_site.html' %}
+{% load static %}
+{% block title %}
+  Search  -Perfect Cushion Store
+{% endblock %}
+{% block content %}
+<p>You have search for:<b>{{query}}</b></p>
+{% for product in products %}
+  <a href="{{product.get_url}}"><img src="{{product.image.url}}" heifht=200px width=200px alt=""></a>
+  <h4>{{product.name}}</h4>
+  <p>Rs.{{product.price}}</p>
+{% empty %}
+<p>0 Result Found</p>
+{% endfor %}
+{% endblock %}

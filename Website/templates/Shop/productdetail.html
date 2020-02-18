@@ -1,0 +1,9 @@
+{% extends 'Shop/base_site.html' %}
+{% block content %}
+<img src="{{product.image.url}}" alt="image not found">
+<h4>{{product.name}}</h4>
+<h5>{{product.price}}</h5>
+<h5>{{product.category}}</h5>
+<h5>{{product.stock}}</h5>
+<a href="#">Add to cart</a>
+{% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .signup
+      {
+        padding: 20px;
+      }
+      h1
+      {
+        padding: 20px;
+        padding-left: 50px;
+        font-size: 50px;
+        font-weight: bold;
+        color: #0000cc;
+      }
+      label
+      {
+        padding: 20px;
+        padding-left: 50px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #990099;
+      }
+      input[type=email]
+      {
+        margin-left: 46px;
+      }
+      input[type=submit]
+      {
+        margin-top: 30px;
+        margin-left: 100px;
+        padding-left: 100px;
+        border: 2px;
+        background-color: #123646;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 17px;
+        line-height: 30px;
+        border-radius: 4px;
+        border: 2px solid black;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        color: #FFFFFF;
+        cursor: pointer;
+        width: 20%;
+        text-align: left;
+      }
+
+      input[type=submit]:hover
+      {
+        background-color: #373646;
+        font-size: 21px;
+        cursor: pointer;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body style="background-image: url({% static 'image/img19.jpg' %});">
+    <div class="signup">
+      <form method="post">
+        {% csrf_token %}
+        <h1>Sign Up Here:</h1>
+        {{sign.as_p}}
+        <input type="submit" name="submit" value="Submit">
+      </form>
+    </div>
+  </body>
+</html>
